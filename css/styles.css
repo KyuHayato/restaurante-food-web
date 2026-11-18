@@ -1,182 +1,187 @@
+:root {
+  --cor-fundo-pagina: #eaf5f0;
+  --cor-destaque-suave: #d4f0e5;
+  --cor-primaria: #18a77b;
+  --cor-primaria-hover: #138a65;
+  --cor-texto-escuro: #25433a;
+  --cor-texto-titulo: #16634d;
+  --cor-texto-suave: #648078;
+  --cor-borda-suave: #d7e7e1;
+}
 
-      :root {
-        --cor-fundo-pagina: #eaf5f0;
-        --cor-destaque-suave: #d4f0e5;
-        --cor-primaria: #18a77b;
-        --cor-primaria-hover: #138a65;
-        --cor-texto-escuro: #25433a;
-        --cor-texto-titulo: #16634d;
-        --cor-texto-suave: #648078;
-        --cor-borda-suave: #d7e7e1;
-      }
+body {
+  background-color: var(--cor-fundo-pagina);
+  color: var(--cor-texto-escuro);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-      body {
-        background-color: var(--cor-fundo-pagina);
-        color: var(--cor-texto-escuro);
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+main {
+  flex: 1;
+}
 
-      main {
-        flex: 1;
-      }
+/* Navbar */
+.navbar-receitas {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--cor-borda-suave);
+}
 
-      /* Navbar */
-      .navbar-receitas {
-        background-color: #ffffff;
-        border-bottom: 1px solid var(--cor-borda-suave);
-      }
+.brand-receitas {
+  color: var(--cor-primaria);
+  font-weight: 600;
+}
 
-      .brand-receitas {
-        color: var(--cor-primaria);
-        font-weight: 600;
-      }
+.brand-receitas:hover {
+  color: var(--cor-primaria-hover);
+}
 
-      .brand-receitas:hover {
-        color: var(--cor-primaria-hover);
-      }
+.nav-receitas .nav-link {
+  color: var(--cor-texto-suave);
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  font-weight: 500;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
 
-      .nav-receitas .nav-link {
-        color: var(--cor-texto-suave);
-        border-radius: 0.5rem;
-        padding: 0.4rem 0.85rem;
-        font-weight: 500;
-        transition:
-          background-color 0.15s ease,
-          color 0.15s ease;
-      }
+.nav-receitas .nav-link:hover {
+  background-color: var(--cor-fundo-pagina);
+  color: var(--cor-texto-escuro);
+}
 
-      .nav-receitas .nav-link:hover {
-        background-color: var(--cor-fundo-pagina);
-        color: var(--cor-texto-escuro);
-      }
+.nav-receitas .nav-link.active {
+  background-color: var(--cor-destaque-suave);
+  color: var(--cor-texto-titulo);
+}
 
-      .nav-receitas .nav-link.active {
-        background-color: var(--cor-destaque-suave);
-        color: var(--cor-texto-titulo);
-      }
+/* Botões Customizados */
+.btn-receitas {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  color: #ffffff;
+}
 
-      /* Botões Customizados */
-      .btn-receitas {
-        background-color: var(--cor-primaria);
-        border-color: var(--cor-primaria);
-        color: #ffffff;
-      }
+.btn-receitas:hover {
+  background-color: var(--cor-primaria-hover);
+  border-color: var(--cor-primaria-hover);
+  color: #ffffff;
+}
 
-      .btn-receitas:hover {
-        background-color: var(--cor-primaria-hover);
-        border-color: var(--cor-primaria-hover);
-        color: #ffffff;
-      }
+.btn-outline-receitas {
+  border-color: var(--cor-primaria);
+  color: var(--cor-primaria);
+  background-color: #ffffff;
+}
 
-      .btn-outline-receitas {
-        border-color: var(--cor-primaria);
-        color: var(--cor-primaria);
-        background-color: #ffffff;
-      }
+.btn-outline-receitas:hover {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
 
-      .btn-outline-receitas:hover {
-        background-color: var(--cor-primaria);
-        color: #ffffff;
-      }
+/* Seção Hero / Busca */
+.section-search {
+  background-color: var(--cor-destaque-suave);
+  border: 1px solid #bfe3d4;
+  border-radius: 0.75rem;
+}
 
-      /* Seção Hero / Busca */
-      .section-search {
-        background-color: var(--cor-destaque-suave);
-        border: 1px solid #bfe3d4;
-        border-radius: 0.75rem;
-      }
+.section-search h1 {
+  color: var(--cor-texto-titulo);
+}
 
-      .section-search h1 {
-        color: var(--cor-texto-titulo);
-      }
+.section-search p {
+  color: #2f5e50;
+}
 
-      .section-search p {
-        color: #2f5e50;
-      }
+/* Cards e Aside */
+.card-receita,
+.card-aside {
+  background-color: #ffffff;
+  border: 1px solid var(--cor-borda-suave);
+  border-radius: 0.75rem;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
 
-      /* Cards e Aside */
-      .card-receita,
-      .card-aside {
-        background-color: #ffffff;
-        border: 1px solid var(--cor-borda-suave);
-        border-radius: 0.75rem;
-        transition:
-          transform 0.15s ease,
-          box-shadow 0.15s ease;
-      }
+.card-receita:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 67, 58, 0.08);
+}
 
-      .card-receita:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(37, 67, 58, 0.08);
-      }
+.card-thumb {
+  height: 110px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cor-destaque-suave);
+  color: var(--cor-primaria);
+}
 
-      .card-thumb {
-        height: 110px;
-        border-radius: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--cor-destaque-suave);
-        color: var(--cor-primaria);
-      }
+/* Variações de cores por categoria (para usar via JS/classes) */
+.tema-massas {
+  background-color: #d4f0e5;
+  color: #16634d;
+}
+.tema-carnes {
+  background-color: #ffe5c9;
+  color: #9c4f0a;
+}
+.tema-doces {
+  background-color: #f8d6e3;
+  color: #962952;
+}
+.tema-saladas {
+  background-color: #d9e8f5;
+  color: #1e4f82;
+}
 
-      /* Variações de cores por categoria (para usar via JS/classes) */
-      .tema-massas {
-        background-color: #d4f0e5;
-        color: #16634d;
-      }
-      .tema-carnes {
-        background-color: #ffe5c9;
-        color: #9c4f0a;
-      }
-      .tema-doces {
-        background-color: #f8d6e3;
-        color: #962952;
-      }
-      .tema-saladas {
-        background-color: #d9e8f5;
-        color: #1e4f82;
-      }
+/* Lista de Categorias no Aside */
+.btn-categoria-item {
+  color: var(--cor-texto-escuro);
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  transition: background-color 0.15s ease;
+}
 
-      /* Lista de Categorias no Aside */
-      .btn-categoria-item {
-        color: var(--cor-texto-escuro);
-        border-radius: 0.5rem;
-        padding: 0.45rem 0.6rem;
-        transition: background-color 0.15s ease;
-      }
+.btn-categoria-item:hover,
+.btn-categoria-item.active {
+  background-color: var(--cor-fundo-pagina);
+  color: var(--cor-texto-titulo);
+  font-weight: 500;
+}
 
-      .btn-categoria-item:hover,
-      .btn-categoria-item.active {
-        background-color: var(--cor-fundo-pagina);
-        color: var(--cor-texto-titulo);
-        font-weight: 500;
-      }
+.badge-contador {
+  background-color: var(--cor-destaque-suave);
+  color: var(--cor-texto-titulo);
+}
 
-      .badge-contador {
-        background-color: var(--cor-destaque-suave);
-        color: var(--cor-texto-titulo);
-      }
+/* Footer */
+.footer-receitas {
+  background-color: var(--cor-texto-escuro);
+  color: var(--cor-destaque-suave);
+}
 
-      /* Footer */
-      .footer-receitas {
-        background-color: var(--cor-texto-escuro);
-        color: var(--cor-destaque-suave);
-      }
+.footer-receitas a {
+  color: var(--cor-destaque-suave);
+  text-decoration: none;
+}
 
-      .footer-receitas a {
-        color: var(--cor-destaque-suave);
-        text-decoration: none;
-      }
+.footer-receitas a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
 
-      .footer-receitas a:hover {
-        text-decoration: underline;
-        color: #ffffff;
-      }
+.footer-copy {
+  color: #9fcdbb;
+  border-top: 1px solid rgba(212, 240, 229, 0.15);
+}
 
-      .footer-copy {
-        color: #9fcdbb;
-        border-top: 1px solid rgba(212, 240, 229, 0.15);
-      }
+.exemplo-back{
+  background-color: yellow;
+  transform: scale(1.1);
+  border: #18a77b dashed 2px;
+}

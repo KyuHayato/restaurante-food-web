@@ -29,4 +29,42 @@
 //         h2.style.color = "white"
 //     }
 // }
+//Seleção de itens DOM do layout
+const formBusca = document.getElementById("form-busca");
+const inputBusca = document.getElementById("input-busca");
+const selectCategoria = document.getElementById("select-categoria");
 
+const listaReceitasEl = document.getElementById("lista-receitas");
+const contadorReceitasEl = document.getElementById("contador-receitas");
+const mensagemVaziaEl = document.getElementById("mensagem-vazia");
+const textoMensagemVaziaEl = document.getElementById("texto-mensagem-vazia");
+
+const listaCategoriasEl = document.getElementById("lista-categorias");
+const templateCard = document.getElementById("template-card-receita");
+const templateCategoria = document.getElementById("template-categoria-item");
+
+const formNewsletter = document.getElementById("form-newsletter");
+const inputNewsletterEmail = document.getElementById("input-newsletter-email");
+const feedbackNewsletterEl = document.getElementById("feedback-newsletter");
+const alertaNewsletterEl = document.getElementById("alerta-newsletter");
+
+const btnEntrar = document.getElementById("btn-entrar");
+const modalDetalhesEl = document.getElementById("modalDetalhesReceita");
+const modalDetalhesTitulo = document.getElementById("modalDetalhesTitulo");
+const modalDetalhesCorpo = document.getElementById("modalDetalhesCorpo");
+const modalBootstrap = new bootstrap.Modal(modalDetalhesEl);
+
+
+const receita  = document.querySelector("#receita")
+
+// receita.addEventListener("mouseover", ()=>{
+//     alert('Evento de blur!')
+// })
+const tituloBusca = document.querySelector("#titulo-busca")
+btnEntrar.addEventListener('click', () =>{
+    tituloBusca.classList.toggle('exemplo-back')
+})
+
+function teste(){
+    alert("Hello!")
+}
