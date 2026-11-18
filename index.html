@@ -3,73 +3,80 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Restaurante</title>
+    <title>Receitas — Início</title>
+
+    <!-- Bootstrap 5.3 CSS e Bootstrap Icons -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
+
   <body>
-    <header>
-      <nav>
-        <div class="container-fluid">
-          <div class="row mt-3">
-            <div class="col-2">
-              <a class="navbar-brand" href="#">
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="25"
-                    height="25"
-                    fill="currentColor"
-                    class="bi bi-cup-hot"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6zM13 12.5a2 2 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5M2.64 13.825 1.123 7h11.754l-1.517 6.825A1.5 1.5 0 0 1 9.896 15H4.104a1.5 1.5 0 0 1-1.464-1.175"
-                    />
-                    <path
-                      d="m4.4.8-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 3.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 6.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8m3 0-.003.004-.014.019a4 4 0 0 0-.204.31 2 2 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.6.6 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3 3 0 0 1-.202.388 5 5 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4 4 0 0 0 .204-.31 2 2 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.6.6 0 0 0-.09-.252A4 4 0 0 0 9.6 2.8l-.01-.012a5 5 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a6 6 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8"
-                    />
-                  </svg>
-                </span>
-                Receitas</a
-              >
-            </div>
-            <div class="col">
-              <ul class="nav justify-content-center">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >Início</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Receitas</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Categorias</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contato</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-1">
+    <!-- ================= CABEÇALHO E NAVEGAÇÃO ================= -->
+    <header class="navbar-receitas sticky-top">
+      <nav
+        class="navbar navbar-expand-md py-2"
+        aria-label="Navegação principal"
+      >
+        <div class="container">
+          <!-- Marca / Logo -->
+          <a
+            class="navbar-brand brand-receitas d-flex align-items-center gap-2"
+            href="index.html"
+          >
+            <i class="bi bi-cup-hot fs-4" aria-hidden="true"></i>
+            <span>Receitas</span>
+          </a>
+
+          <!-- Botão Mobile -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menuPrincipal"
+            aria-controls="menuPrincipal"
+            aria-expanded="false"
+            aria-label="Alternar navegação"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Links Centrais e Ação -->
+          <div class="collapse navbar-collapse" id="menuPrincipal">
+            <ul
+              class="navbar-nav nav-receitas mx-auto gap-1 my-2 my-md-0"
+              id="menu-links"
+            >
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html"
+                  >Início</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./pages/receitas.html">Receitas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#secao-categorias">Categorias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#rodape-contato">Contato</a>
+              </li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
               <button
                 type="button"
-                class="btn-outline theme-success"
-                id="btn-event"
-                onclick="colocarTag()"
+                class="btn btn-sm btn-outline-receitas px-3"
+                id="btn-entrar"
               >
                 Entrar
               </button>
@@ -78,44 +85,55 @@
         </div>
       </nav>
     </header>
-    <main>
-      <section class="section-search p-4 rounded-7 m-5">
-        <div>
-          <h3 style="color: #46edaa">Receitas para todo dia</h3>
-          <h6>Busque por nome ou filtre por categoria.</h6>
+
+    <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+    <main class="container py-4">
+      <!-- Seção 1: Banner de Busca e Filtro -->
+      <section class="section-search p-4 mb-4" aria-labelledby="titulo-busca">
+        <div class="mb-3">
+          <h1 id="titulo-busca" class="h4 fw-semibold mb-1">
+            Receitas para todo dia
+          </h1>
+          <p class="small mb-0">Busque por nome ou filtre por categoria.</p>
         </div>
-        <form action="">
-          <div class="row">
-            <div class="col-7">
+
+        <!-- Formulário de Busca (Eventos: submit, input, change) -->
+        <form id="form-busca" role="search" novalidate>
+          <div class="row g-2 align-items-center">
+            <div class="col-12 col-md-7">
+              <label for="input-busca" class="visually-hidden"
+                >Buscar receita</label
+              >
               <input
-                type="text"
-                class="form-control"
+                type="search"
+                id="input-busca"
+                name="busca"
+                class="form-control bg-white"
                 placeholder="Ex: Macarrão cremoso"
+                autocomplete="off"
               />
             </div>
-            <div class="col-4">
-              <select name="" id="" class="form-control">
-                <option value="todas">Todas</option>
-                <option value="massas">Massas</option>
-                <option value="carnes">Carnes</option>
-                <option value="doces">Doces</option>
-                <option value="saladas">Saladas</option>
+
+            <div class="col-12 col-md-3">
+              <label for="select-categoria" class="visually-hidden"
+                >Filtrar por categoria</label
+              >
+              <select
+                id="select-categoria"
+                name="categoria"
+                class="form-select bg-white"
+              >
+                <option value="todas" selected>Todas</option>
+                <option value="Massas">Massas</option>
+                <option value="Carnes">Carnes</option>
+                <option value="Doces">Doces</option>
+                <option value="Saladas">Saladas</option>
               </select>
             </div>
-            <div class="col-1">
-              <button type="button" class="btn-solid theme-success">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-search"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
-                  />
-                </svg>
+
+            <div class="col-12 col-md-2 d-grid">
+              <button type="submit" id="btn-buscar" class="btn btn-receitas">
+                <i class="bi bi-search me-1" aria-hidden="true"></i>
                 Buscar
               </button>
             </div>
@@ -123,169 +141,465 @@
         </form>
       </section>
 
-      <section class="row">
-        <section class="col-9">
-          <section class="row">
-            <div class="row">
-              <div class="col">
-                <h3>Receitas em destaque</h3>
-              </div>
-              <div class="col"></div>
-            </div>
-            <div class="col-4 mb-4">
-              <article class="card" style="width: 20rem">
-                <div class="card-body">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZXRIon_z2EQ8ARzZrD1HkckOUUKEiNcegsX3HUCb7RQ&s=10"
-                    class="card-img"
-                    alt="Imagem de bolo"
-                  />
-                  <h5 class="mt-2 mb-0 style-card-food">
-                    Bolo de chocolate granulado
-                  </h5>
-                  <div class="row">
-                    <div class="col">
-                      <span class="badge badge-subtle theme-success"
-                        >Fácil</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-4">
-              <article class="card" style="width: 20rem">
-                <div class="card-body">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZXRIon_z2EQ8ARzZrD1HkckOUUKEiNcegsX3HUCb7RQ&s=10"
-                    class="card-img"
-                    alt="Imagem de bolo"
-                  />
-                  <h5 class="mt-2 mb-0 style-card-food">
-                    Bolo de chocolate granulado
-                  </h5>
-                  <div class="row">
-                    <div class="col">
-                      <span class="badge badge-subtle theme-success"
-                        >Fácil</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-4">
-              <article class="card" style="width: 20rem">
-                <div class="card-body">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZXRIon_z2EQ8ARzZrD1HkckOUUKEiNcegsX3HUCb7RQ&s=10"
-                    class="card-img"
-                    alt="Imagem de bolo"
-                  />
-                  <h5 class="mt-2 mb-0 style-card-food">
-                    Bolo de chocolate granulado
-                  </h5>
-                  <div class="row">
-                    <div class="col">
-                      <span class="badge badge-subtle theme-success"
-                        >Fácil</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-4 mb-4">
-              <article class="card" style="width: 20rem">
-                <div class="card-body">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZXRIon_z2EQ8ARzZrD1HkckOUUKEiNcegsX3HUCb7RQ&s=10"
-                    class="card-img"
-                    alt="Imagem de bolo"
-                  />
-                  <h5 class="mt-2 mb-0 style-card-food">
-                    Bolo de chocolate granulado
-                  </h5>
-                  <div class="row">
-                    <div class="col">
-                      <span class="badge badge-subtle theme-success"
-                        >Fácil</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-4">
-              <article class="card" style="width: 20rem">
-                <div class="card-body">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZXRIon_z2EQ8ARzZrD1HkckOUUKEiNcegsX3HUCb7RQ&s=10"
-                    class="card-img"
-                    alt="Imagem de bolo"
-                  />
-                  <h5 class="mt-2 mb-0 style-card-food">
-                    Bolo de chocolate granulado
-                  </h5>
-                  <div class="row">
-                    <div class="col">
-                      <span class="badge badge-subtle theme-success"
-                        >Fácil</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-4">
-              <article class="card" style="width: 20rem">
-                <div class="card-body">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZXRIon_z2EQ8ARzZrD1HkckOUUKEiNcegsX3HUCb7RQ&s=10"
-                    class="card-img"
-                    alt="Imagem de bolo"
-                  />
-                  <h5 class="mt-2 mb-0 style-card-food">
-                    Bolo de chocolate granulado
-                  </h5>
-                  <div class="row">
-                    <div class="col">
-                      <span class="badge badge-subtle theme-success"
-                        >Fácil</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </section>
-        </section>
-        <aside class="col-3">
-          Categorias
-          <div>
-            <div
-              class="btn-group-vertical"
-              role="group"
-              aria-label="Vertical button group"
+      <!-- Grid Principal: Lista de Receitas (col-lg-9) + Barra Lateral (col-lg-3) -->
+      <div class="row g-4 align-items-start">
+        <!-- Coluna Esquerda: Receitas em Destaque -->
+        <section class="col-12 col-lg-9" aria-labelledby="titulo-destaques">
+          <div class="d-flex justify-content-between align-items-baseline mb-3">
+            <h2 id="titulo-destaques" class="h5 fw-semibold mb-0">
+              Receitas em destaque
+            </h2>
+            <small id="contador-receitas" class="text-muted"
+              >Mostrando 6 de 6</small
             >
-              <button type="button" class="btn-solid theme-primary">
-                Massas    
+          </div>
+
+          <!-- Mensagem de estado vazio (oculta por padrão; exibir via JS quando filter retornar []) -->
+          <div
+            id="mensagem-vazia"
+            class="alert alert-light border text-center py-4 d-none"
+            role="status"
+          >
+            <i
+              class="bi bi-search fs-4 d-block mb-1 text-muted"
+              aria-hidden="true"
+            ></i>
+            <span id="texto-mensagem-vazia"
+              >Nenhuma receita encontrada para o filtro informado.</span
+            >
+          </div>
+
+          <!-- Container dos Cards (Alvo para renderização dinâmica com map/filter/template) -->
+          <div id="lista-receitas" class="row g-3">
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <article
+                class="card card-receita h-100 p-2"
+                data-id="1"
+                data-categoria="Massas"
+              >
+                <figure class="card-thumb tema-massas mb-2">
+                  <i class="bi bi-image fs-3" aria-hidden="true"></i>
+                </figure>
+                <div
+                  class="card-body p-1 d-flex flex-column justify-content-between"
+                >
+                  <div>
+                    <h3 class="h6 fw-semibold mb-1">Macarrão cremoso</h3>
+                    <p class="small text-muted mb-2">Massas · 20 min</p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-1"
+                  >
+                    <span class="badge rounded-pill tema-massas">Fácil</span>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-link text-decoration-none p-0 btn-detalhes"
+                      data-id="1"
+                    >
+                      Ver receita
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <article
+                class="card card-receita h-100 p-2"
+                data-id="2"
+                data-categoria="Carnes"
+              >
+                <figure class="card-thumb tema-carnes mb-2">
+                  <i class="bi bi-image fs-3" aria-hidden="true"></i>
+                </figure>
+                <div
+                  class="card-body p-1 d-flex flex-column justify-content-between"
+                >
+                  <div>
+                    <h3 class="h6 fw-semibold mb-1">Frango grelhado</h3>
+                    <p class="small text-muted mb-2">Carnes · 30 min</p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-1"
+                  >
+                    <span class="badge rounded-pill tema-carnes">Médio</span>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-link text-decoration-none p-0 btn-detalhes"
+                      data-id="2"
+                    >
+                      Ver receita
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <article
+                class="card card-receita h-100 p-2"
+                data-id="3"
+                data-categoria="Doces"
+              >
+                <figure class="card-thumb tema-doces mb-2">
+                  <i class="bi bi-image fs-3" aria-hidden="true"></i>
+                </figure>
+                <div
+                  class="card-body p-1 d-flex flex-column justify-content-between"
+                >
+                  <div>
+                    <h3 class="h6 fw-semibold mb-1">Cheesecake de frutas</h3>
+                    <p class="small text-muted mb-2">Doces · 50 min</p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-1"
+                  >
+                    <span class="badge rounded-pill tema-doces">Difícil</span>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-link text-decoration-none p-0 btn-detalhes"
+                      data-id="3"
+                    >
+                      Ver receita
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <article
+                class="card card-receita h-100 p-2"
+                data-id="4"
+                data-categoria="Saladas"
+              >
+                <figure class="card-thumb tema-saladas mb-2">
+                  <i class="bi bi-image fs-3" aria-hidden="true"></i>
+                </figure>
+                <div
+                  class="card-body p-1 d-flex flex-column justify-content-between"
+                >
+                  <div>
+                    <h3 class="h6 fw-semibold mb-1">Salada caesar</h3>
+                    <p class="small text-muted mb-2">Saladas · 15 min</p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-1"
+                  >
+                    <span class="badge rounded-pill tema-saladas">Fácil</span>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-link text-decoration-none p-0 btn-detalhes"
+                      data-id="4"
+                    >
+                      Ver receita
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <article
+                class="card card-receita h-100 p-2"
+                data-id="5"
+                data-categoria="Massas"
+              >
+                <figure class="card-thumb tema-massas mb-2">
+                  <i class="bi bi-image fs-3" aria-hidden="true"></i>
+                </figure>
+                <div
+                  class="card-body p-1 d-flex flex-column justify-content-between"
+                >
+                  <div>
+                    <h3 class="h6 fw-semibold mb-1">Lasanha de abobrinha</h3>
+                    <p class="small text-muted mb-2">Massas · 45 min</p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-1"
+                  >
+                    <span class="badge rounded-pill tema-massas">Médio</span>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-link text-decoration-none p-0 btn-detalhes"
+                      data-id="5"
+                    >
+                      Ver receita
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <article
+                class="card card-receita h-100 p-2"
+                data-id="6"
+                data-categoria="Doces"
+              >
+                <figure class="card-thumb tema-doces mb-2">
+                  <i class="bi bi-image fs-3" aria-hidden="true"></i>
+                </figure>
+                <div
+                  class="card-body p-1 d-flex flex-column justify-content-between"
+                >
+                  <div>
+                    <h3 class="h6 fw-semibold mb-1">Brigadeiro gourmet</h3>
+                    <p class="small text-muted mb-2">Doces · 25 min</p>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center mt-1"
+                  >
+                    <span class="badge rounded-pill tema-doces">Fácil</span>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-link text-decoration-none p-0 btn-detalhes"
+                      data-id="6"
+                    >
+                      Ver receita
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Coluna Direita: Barra Lateral (Categorias e Newsletter) -->
+        <aside
+          id="secao-categorias"
+          class="col-12 col-lg-3"
+          aria-label="Categorias e newsletter"
+        >
+          <!-- Bloco 1: Categorias -->
+          <div class="card card-aside p-3 mb-3">
+            <h2 class="h6 fw-semibold mb-2">Categorias</h2>
+            <ul
+              id="lista-categorias"
+              class="list-unstyled mb-0 d-flex flex-column gap-1"
+            >
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-sm w-100 d-flex justify-content-between align-items-center btn-categoria-item active"
+                  data-categoria="todas"
+                >
+                  <span>Todas</span>
+                  <span class="badge rounded-pill badge-contador">6</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-sm w-100 d-flex justify-content-between align-items-center btn-categoria-item"
+                  data-categoria="Massas"
+                >
+                  <span>Massas</span>
+                  <span class="badge rounded-pill badge-contador">2</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-sm w-100 d-flex justify-content-between align-items-center btn-categoria-item"
+                  data-categoria="Carnes"
+                >
+                  <span>Carnes</span>
+                  <span class="badge rounded-pill badge-contador">1</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-sm w-100 d-flex justify-content-between align-items-center btn-categoria-item"
+                  data-categoria="Doces"
+                >
+                  <span>Doces</span>
+                  <span class="badge rounded-pill badge-contador">2</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="btn btn-sm w-100 d-flex justify-content-between align-items-center btn-categoria-item"
+                  data-categoria="Saladas"
+                >
+                  <span>Saladas</span>
+                  <span class="badge rounded-pill badge-contador">1</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bloco 2: Formulário de Newsletter (Validação básica e mensagens) -->
+          <div class="card card-aside p-3">
+            <h2 class="h6 fw-semibold mb-2">Newsletter</h2>
+            <p class="small text-muted mb-2">
+              Receba novas receitas toda semana.
+            </p>
+
+            <form id="form-newsletter" novalidate>
+              <div class="mb-2">
+                <label for="input-newsletter-email" class="visually-hidden"
+                  >Seu e-mail</label
+                >
+                <input
+                  type="email"
+                  id="input-newsletter-email"
+                  name="email"
+                  class="form-control form-control-sm"
+                  placeholder="nome@email.com"
+                  required
+                />
+                <!-- Mensagem de erro / sucesso para validação no DOM -->
+                <div id="feedback-newsletter" class="invalid-feedback">
+                  Informe um endereço de e-mail válido.
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                id="btn-assinar"
+                class="btn btn-sm btn-receitas w-100"
+              >
+                Assinar
               </button>
-              <button type="button" class="btn-solid theme-primary">
-                Carnes
-              </button>
-              <button type="button" class="btn-solid theme-primary">
-                Doces
-              </button>
-              <button type="button" class="btn-solid theme-primary">
-                Saladas
+
+              <!-- Alerta de confirmação dinâmica -->
+              <div
+                id="alerta-newsletter"
+                class="alert alert-success py-1 px-2 small mt-2 mb-0 d-none"
+                role="alert"
+              >
+                Inscrição realizada com sucesso!
+              </div>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- ================= MODAL DE DETALHES (Para treino de find() + click) ================= -->
+    <div
+      class="modal fade"
+      id="modalDetalhesReceita"
+      tabindex="-1"
+      aria-labelledby="modalDetalhesTitulo"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title h5" id="modalDetalhesTitulo">
+              Título da Receita
+            </h3>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body" id="modalDetalhesCorpo">
+            <!-- Preenchido dinamicamente via JS -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-sm btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= RODAPÉ ================= -->
+    <footer id="rodape-contato" class="footer-receitas mt-5 pt-4 pb-3">
+      <div class="container">
+        <div class="row g-4 pb-3">
+          <div class="col-12 col-md-6">
+            <h2 class="h6 text-white fw-semibold mb-1">Receitas</h2>
+            <p class="small mb-0">Cozinhe com o que tem em casa.</p>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <h2 class="h6 text-white fw-semibold mb-1">Links</h2>
+            <ul class="list-unstyled small mb-0 d-flex gap-2">
+              <li><a href="index.html">Início</a></li>
+              <li aria-hidden="true">·</li>
+              <li><a href="receitas.html">Receitas</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-md-3">
+            <h2 class="h6 text-white fw-semibold mb-1">Contato</h2>
+            <address class="small mb-0">
+              <a href="mailto:oi@receitas.com">oi@receitas.com</a>
+            </address>
+          </div>
+        </div>
+
+        <div class="footer-copy pt-3 small">
+          © 2026 Receitas. Projeto de aula.
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= TEMPLATES HTML (Para aula de clonagem e renderização dinâmica) ================= -->
+    <template id="template-card-receita">
+      <div class="col-12 col-sm-6 col-md-4">
+        <article class="card card-receita h-100 p-2">
+          <figure class="card-thumb mb-2">
+            <i class="bi bi-image fs-3" aria-hidden="true"></i>
+          </figure>
+          <div class="card-body p-1 d-flex flex-column justify-content-between">
+            <div>
+              <h3 class="h6 fw-semibold mb-1 titulo-receita"></h3>
+              <p class="small text-muted mb-2 info-receita"></p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-1">
+              <span class="badge rounded-pill badge-dificuldade"></span>
+              <button
+                type="button"
+                class="btn btn-sm btn-link text-decoration-none p-0 btn-detalhes"
+              >
+                Ver receita
               </button>
             </div>
           </div>
-        </aside>
-      </section>
-    </main>
-    <footer></footer>
+        </article>
+      </div>
+    </template>
+
+    <template id="template-categoria-item">
+      <li>
+        <button
+          type="button"
+          class="btn btn-sm w-100 d-flex justify-content-between align-items-center btn-categoria-item"
+        >
+          <span class="nome-categoria"></span>
+          <span class="badge rounded-pill badge-contador qtd-categoria"></span>
+        </button>
+      </li>
+    </template>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Script dos Alunos -->
+    <script src="js/script.js"></script>
   </body>
-  <script src="js/script.js"></script>
 </html>
