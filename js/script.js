@@ -29,7 +29,109 @@
 //         h2.style.color = "white"
 //     }
 // }
+
 //Seleção de itens DOM do layout
+// ============================================================================
+// 1. BASE DE DADOS (ARRAYS DE OBJETOS)
+// ============================================================================
+const receitas = [
+  {
+    id: 1,
+    titulo: "Macarrão cremoso",
+    categoria: "Massas",
+    dificuldade: "Fácil",
+    tempo: "20 min",
+    temaClasse: "tema-massas",
+    ingredientes: [
+      "250g de macarrão penne",
+      "1 caixa de creme de leite",
+      "100g de queijo parmesão",
+      "Alho e sal a gosto",
+    ],
+    preparo:
+      "Cozinhe o macarrão al dente. Em uma panela, refogue o alho, adicione o creme de leite e o queijo até derreter, e misture a massa.",
+  },
+  {
+    id: 2,
+    titulo: "Frango grelhado",
+    categoria: "Carnes",
+    dificuldade: "Médio",
+    tempo: "30 min",
+    temaClasse: "tema-carnes",
+    ingredientes: [
+      "2 filés de peito de frango",
+      "Suco de 1 limão",
+      "Páprica doce",
+      "Azeite e sal",
+    ],
+    preparo:
+      "Tempere os filés com limão, páprica e sal por 15 minutos. Grelhe em frigideira quente com um fio de azeite por 6 minutos de cada lado.",
+  },
+  {
+    id: 3,
+    titulo: "Cheesecake de frutas",
+    categoria: "Doces",
+    dificuldade: "Difícil",
+    tempo: "50 min",
+    temaClasse: "tema-doces",
+    ingredientes: [
+      "200g de biscoito maisena",
+      "100g de manteiga",
+      "300g de cream cheese",
+      "Geleia de frutas vermelhas",
+    ],
+    preparo:
+      "Triture o biscoito com manteiga para a base. Bata o cream cheese com açúcar, leve para gelar por 4 horas e finalize com a geleia.",
+  },
+  {
+    id: 4,
+    titulo: "Salada caesar",
+    categoria: "Saladas",
+    dificuldade: "Fácil",
+    tempo: "15 min",
+    temaClasse: "tema-saladas",
+    ingredientes: [
+      "1 pé de alface americana",
+      "Croutons crocantes",
+      "Lasca de parmesão",
+      "Molho caesar",
+    ],
+    preparo:
+      "Higienize e rasgue as folhas de alface. Adicione os croutons, o parmesão e regue com o molho na hora de servir.",
+  },
+  {
+    id: 5,
+    titulo: "Lasanha de abobrinha",
+    categoria: "Massas",
+    dificuldade: "Médio",
+    tempo: "45 min",
+    temaClasse: "tema-massas",
+    ingredientes: [
+      "2 abobrinhas fatiadas",
+      "300g de molho de tomate",
+      "200g de muçarela",
+      "Orégano",
+    ],
+    preparo:
+      "Intercale camadas de abobrinha grelhada, molho de tomate e muçarela em um refratário. Asse a 200°C por 25 minutos.",
+  },
+  {
+    id: 6,
+    titulo: "Brigadeiro gourmet",
+    categoria: "Doces",
+    dificuldade: "Fácil",
+    tempo: "25 min",
+    temaClasse: "tema-doces",
+    ingredientes: [
+      "1 lata de leite condensado",
+      "50g de chocolate meio amargo",
+      "1 colher de manteiga",
+      "Granulado belga",
+    ],
+    preparo:
+      "Leve todos os ingredientes ao fogo baixo mexendo sempre até desgrudar do fundo da panela. Deixe esfriar, enrole e passe no granulado.",
+  },
+];
 const formBusca = document.getElementById("form-busca");
 const inputBusca = document.getElementById("input-busca");
 const selectCategoria = document.getElementById("select-categoria");
@@ -54,17 +156,85 @@ const modalDetalhesTitulo = document.getElementById("modalDetalhesTitulo");
 const modalDetalhesCorpo = document.getElementById("modalDetalhesCorpo");
 const modalBootstrap = new bootstrap.Modal(modalDetalhesEl);
 
-
-const receita  = document.querySelector("#receita")
+const receita = document.querySelector("#receita");
 
 // receita.addEventListener("mouseover", ()=>{
 //     alert('Evento de blur!')
 // })
-const tituloBusca = document.querySelector("#titulo-busca")
-btnEntrar.addEventListener('click', () =>{
-    tituloBusca.classList.toggle('exemplo-back')
-})
+const tituloBusca = document.querySelector("#titulo-busca");
+btnEntrar.addEventListener("click", () => {
+  tituloBusca.classList.toggle("exemplo-back");
+});
 
-function teste(){
-    alert("Hello!")
+function teste() {
+  alert("Hello!");
 }
+
+let divExemplo = document.querySelector("#exemplo");
+let btnExemplo = document.querySelector("#btn-exemplo");
+
+function criarElemento() {
+  let novoElemento = document.createElement("p");
+  novoElemento.textContent = "Novo elemento criado!";
+  divExemplo.appendChild(novoElemento);
+}
+// btnExemplo.addEventListener("click", criarElemento);
+
+function atualizaElemento() {
+  let elementoExistente = divExemplo.querySelector("p");
+  let elementoNovo = document.createElement("p");
+  let texto = prompt("Difite o novo conteúdo do elemento:");
+  elementoNovo.textContent = texto;
+  divExemplo.replaceChild(elementoNovo, elementoExistente);
+}
+
+function removeElemento() {
+  divExemplo.remove();
+}
+
+function renderizarReceitas(listaFiltrada) {
+  listaReceitasEl.innerHTML = "";
+  contadorReceitasEl.textContent = `Mostrando ${listaFiltrada.length} de ${receitas.length}`;
+
+  // Controle de estado vazio
+  if (listaFiltrada.length === 0) {
+    mensagemVaziaEl.classList.remove("d-none");
+    const termo = inputBusca.value.trim();
+    textoMensagemVaziaEl.textContent = termo
+      ? `Nenhuma receita encontrada para "${termo}".`
+      : "Nenhuma receita encontrada nesta categoria.";
+    return;
+  }
+  mensagemVaziaEl.classList.add("d-none");
+  // Cria os nós clonando o <template> para cada item filtrado
+  const fragmentos = listaFiltrada.map((receita) => {
+    const clone = templateCard.content.cloneNode(true);
+
+    const article = clone.querySelector(".card-receita");
+    const thumb = clone.querySelector(".card-thumb");
+    const titulo = clone.querySelector(".titulo-receita");
+    const info = clone.querySelector(".info-receita");
+    const badge = clone.querySelector(".badge-dificuldade");
+    const btnDetalhes = clone.querySelector(".btn-detalhes");
+
+    article.dataset.id = receita.id;
+    article.dataset.categoria = receita.categoria;
+
+    thumb.classList.add(receita.temaClasse); 
+    titulo.textContent = receita.titulo;
+    info.textContent = `${receita.categoria} · ${receita.tempo}`;
+
+    badge.classList.add(receita.temaClasse);
+    badge.textContent = receita.dificuldade;
+
+    btnDetalhes.dataset.id = receita.id;
+
+    return clone;
+  });
+
+  fragmentos.forEach((no) => listaReceitasEl.appendChild(no));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderizarReceitas(receitas);
+});
