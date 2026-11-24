@@ -237,6 +237,7 @@ function renderizarReceitas(listaFiltrada) {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderizarReceitas(receitas);
+   renderizarCategoriasLateral(); //Bloco 5
 });
 
 btnEntrar.addEventListener("click", () => {
@@ -266,6 +267,7 @@ function aplicarFiltros() {
   });
 
   renderizarReceitas(receitasFiltradas);
+  atualizarDestaqueCategoriaLateral(categoriaSelecionada); 
 }
 
 formBusca.addEventListener("submit", (event) => {
@@ -299,4 +301,58 @@ listaReceitasEl.addEventListener("click", (event) => {
   `;
 
   modalBootstrap.show();
+});
+
+function renderizarCategoriasLateral() {
+  // Acumula a contagem de cada categoria: { Massas: 2, Carnes: 1, ... }
+  const contagemPorCategoria = receitas.reduce((acumulador, item) => {
+    acumulador[item.categoria] = (acumulador[item.categoria] || 0) + 1;
+    return acumulador;
+  }, {});
+
+  const categoriasDisponiveis = ["todas", ...Object.keys(contagemPorCategoria)];
+  listaCategoriasEl.innerHTML = "";
+
+  categoriasDisponiveis.forEach((cat) => {
+    const clone = templateCategoria.content.cloneNode(true);
+    const botao = clone.querySelector(".btn-categoria-item");
+    const nomeSpan = clone.querySelector(".nome-categoria");
+    const qtdSpan = clone.querySelector(".qtd-categoria");
+
+    const isTodas = cat === "todas";
+    botao.dataset.categoria = cat;
+    nomeSpan.textContent = isTodas ? "Todas" : cat;
+    qtdSpan.textContent = isTodas ? receitas.length : contagemPorCategoria[cat];
+
+    if (selectCategoria.value === cat) {
+      botao.classList.add("active");
+    }
+
+    listaCategoriasEl.appendChild(clone);
+  });
+}
+
+function atualizarDestaqueCategoriaLateral(categoriaAtiva) {
+  const botoes = listaCategoriasEl.querySelectorAll(".btn-categoria-item");
+  botoes.forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.categoria === categoriaAtiva);
+  });
+}
+
+// Filtra em tempo real enquanto o usuário digita 
+//Bloco 5
+inputBusca.addEventListener("input", aplicarFiltros);
+
+// Filtra ao trocar a opção no <select>
+//Bloco 5
+selectCategoria.addEventListener("change", aplicarFiltros);
+
+// Delegação de eventos de clique na lista de categorias do <aside>
+//Bloco 5
+listaCategoriasEl.addEventListener("click", (event) => {
+  const botaoCategoria = event.target.closest(".btn-categoria-item");
+  if (!botaoCategoria) return;
+
+  selectCategoria.value = botaoCategoria.dataset.categoria;
+  aplicarFiltros();
 });
