@@ -312,7 +312,7 @@ function renderizarCategoriasLateral() {
 
   const categoriasDisponiveis = ["todas", ...Object.keys(contagemPorCategoria)];
   listaCategoriasEl.innerHTML = "";
-
+  console.log("Categorias disponíveis:", categoriasDisponiveis);
   categoriasDisponiveis.forEach((cat) => {
     const clone = templateCategoria.content.cloneNode(true);
     const botao = clone.querySelector(".btn-categoria-item");
@@ -355,4 +355,72 @@ listaCategoriasEl.addEventListener("click", (event) => {
 
   selectCategoria.value = botaoCategoria.dataset.categoria;
   aplicarFiltros();
+});
+
+formNewsletter.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // Tratamento de dados: remove espaços e padroniza em minúsculas
+  const emailTratado = inputNewsletterEmail.value.trim().toLowerCase();
+  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTratado);
+
+  alertaNewsletterEl.classList.add("d-none");
+
+  if (!emailTratado || !emailValido) {
+    inputNewsletterEmail.classList.remove("is-valid");
+    inputNewsletterEmail.classList.add("is-invalid");
+    feedbackNewsletterEl.textContent = !emailTratado
+      ? "O campo de e-mail é obrigatório."
+      : "Digite um e-mail válido (ex: aluno@email.com).";
+    inputNewsletterEmail.focus();
+    return;
+  }
+
+  // Estado válido
+  inputNewsletterEmail.classList.remove("is-invalid");
+  inputNewsletterEmail.classList.add("is-valid");
+  alertaNewsletterEl.textContent = `E-mail ${emailTratado} cadastrado com sucesso!`;
+  alertaNewsletterEl.classList.remove("d-none");
+
+  formNewsletter.reset();
+  setTimeout(() => {
+    inputNewsletterEmail.classList.remove("is-valid");
+  }, 2500);
+});
+
+formNewsletter.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // Tratamento de dados: remove espaços e padroniza em minúsculas
+  const emailTratado = inputNewsletterEmail.value.trim().toLowerCase();
+  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTratado);
+
+  alertaNewsletterEl.classList.add("d-none");
+
+  if (!emailTratado || !emailValido) {
+    inputNewsletterEmail.classList.remove("is-valid");
+    inputNewsletterEmail.classList.add("is-invalid");
+    feedbackNewsletterEl.textContent = !emailTratado
+      ? "O campo de e-mail é obrigatório."
+      : "Digite um e-mail válido (ex: aluno@email.com).";
+    inputNewsletterEmail.focus();
+    return;
+  }
+
+  // Estado válido
+  inputNewsletterEmail.classList.remove("is-invalid");
+  inputNewsletterEmail.classList.add("is-valid");
+  alertaNewsletterEl.textContent = `E-mail ${emailTratado} cadastrado com sucesso!`;
+  alertaNewsletterEl.classList.remove("d-none");
+
+  formNewsletter.reset();
+  setTimeout(() => {
+    inputNewsletterEmail.classList.remove("is-valid");
+  }, 2500);
+});
+
+inputNewsletterEmail.addEventListener("input", () => {
+  if (inputNewsletterEmail.classList.contains("is-invalid")) {
+    inputNewsletterEmail.classList.remove("is-invalid");
+  }
 });
