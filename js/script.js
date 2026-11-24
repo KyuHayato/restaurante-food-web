@@ -238,3 +238,38 @@ function renderizarReceitas(listaFiltrada) {
 document.addEventListener("DOMContentLoaded", () => {
   renderizarReceitas(receitas);
 });
+
+btnEntrar.addEventListener("click", () => {
+  const logado = btnEntrar.dataset.logado === "true";
+
+  if (!logado) {
+    btnEntrar.textContent = "Olá, Chef!";
+    btnEntrar.dataset.logado = "true";
+    btnEntrar.classList.replace("btn-outline-receitas", "btn-receitas");
+  } else {
+    btnEntrar.textContent = "Entrar";
+    btnEntrar.dataset.logado = "false";
+    btnEntrar.classList.replace("btn-receitas", "btn-outline-receitas");
+  }
+});
+
+function aplicarFiltros() {
+  const termoBusca = inputBusca.value.trim().toLowerCase();
+  const categoriaSelecionada = selectCategoria.value;
+
+  const receitasFiltradas = receitas.filter((receita) => {
+    const bateCategoria =
+      categoriaSelecionada === "todas" || receita.categoria === categoriaSelecionada;
+    const bateTexto = receita.titulo.toLowerCase().includes(termoBusca);
+
+    return bateCategoria && bateTexto;
+  });
+
+  renderizarReceitas(receitasFiltradas);
+  atualizarDestaqueCategoriaLateral(categoriaSelecionada); //Bloco 5
+}
+
+formBusca.addEventListener("submit", (event) => {
+  event.preventDefault();
+  aplicarFiltros();
+});
