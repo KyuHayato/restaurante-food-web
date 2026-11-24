@@ -266,10 +266,37 @@ function aplicarFiltros() {
   });
 
   renderizarReceitas(receitasFiltradas);
-  atualizarDestaqueCategoriaLateral(categoriaSelecionada); //Bloco 5
 }
 
 formBusca.addEventListener("submit", (event) => {
   event.preventDefault();
   aplicarFiltros();
+});
+
+
+listaReceitasEl.addEventListener("click", (event) => {
+  const botaoDetalhes = event.target.closest(".btn-detalhes");
+  if (!botaoDetalhes) return;
+
+  const idSelecionado = Number(botaoDetalhes.dataset.id);
+  const receitaEncontrada = receitas.find((item) => item.id === idSelecionado);
+
+  if (!receitaEncontrada) return;
+
+  modalDetalhesTitulo.textContent = receitaEncontrada.titulo;
+  modalDetalhesCorpo.innerHTML = `
+    <div class="d-flex gap-2 mb-3">
+      <span class="badge rounded-pill ${receitaEncontrada.temaClasse}">${receitaEncontrada.categoria}</span>
+      <span class="badge bg-light text-dark border">${receitaEncontrada.dificuldade}</span>
+      <span class="badge bg-light text-dark border">${receitaEncontrada.tempo}</span>
+    </div>
+    <h4 class="h6 fw-semibold">Ingredientes</h4>
+    <ul class="small mb-3">
+      ${receitaEncontrada.ingredientes.map((ing) => `<li>${ing}</li>`).join("")}
+    </ul>
+    <h4 class="h6 fw-semibold">Modo de preparo</h4>
+    <p class="small text-muted mb-0">${receitaEncontrada.preparo}</p>
+  `;
+
+  modalBootstrap.show();
 });
