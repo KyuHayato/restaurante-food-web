@@ -180,8 +180,82 @@ main {
   border-top: 1px solid rgba(212, 240, 229, 0.15);
 }
 
-.exemplo-back{
+.exemplo-back {
   background-color: yellow;
   transform: scale(1.1);
   border: #18a77b dashed 2px;
+}
+
+/* Cards e Tabela */
+.card-painel {
+  background-color: #ffffff;
+  border: 1px solid var(--cor-borda-suave);
+  border-radius: 0.75rem;
+}
+
+.tabela-receitas thead th {
+  background-color: #f3f9f6;
+  color: var(--cor-texto-suave);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--cor-borda-suave);
+}
+
+.tabela-receitas tbody td {
+  vertical-align: middle;
+  border-color: #e3efea;
+}
+
+.thumb-tabela {
+  width: 34px;
+  height: 34px;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Botões de Ação na Tabela */
+.btn-acao-editar {
+  background-color: #eaf5f0;
+  color: #18a77b;
+  border: none;
+}
+
+.btn-acao-editar:hover {
+  background-color: #d4f0e5;
+  color: #138a65;
+}
+
+.btn-acao-excluir {
+  background-color: #fbe3e6;
+  color: #c23b4c;
+  border: none;
+}
+
+.btn-acao-excluir:hover {
+  background-color: #f7ccd2;
+  color: #9e2938;
+}
+
+/* Alerta de feedback */
+.alerta-receitas {
+  background-color: var(--cor-destaque-suave);
+  border: 1px solid #9fd9c0;
+  color: var(--cor-texto-titulo);
+}
+
+/* Paginação */
+.paginacao-receitas .page-link {
+  color: var(--cor-texto-escuro);
+  border-color: #cfe6dc;
+}
+
+.paginacao-receitas .page-item.active .page-link {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  color: #ffffff;
 }
