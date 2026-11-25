@@ -82,3 +82,78 @@ const textareaPreparo = document.getElementById("textarea-preparo");
 const checkPublicar = document.getElementById("check-publicar");
 const btnCancelar = document.getElementById("btn-cancelar-receita");
 const btnEntrar = document.getElementById("btn-entrar");
+
+function obterClasseTema(categoria) {
+  const mapaTemas = {
+    Massas: "tema-massas",
+    Carnes: "tema-carnes",
+    Doces: "tema-doces",
+    Saladas: "tema-saladas"
+  };
+  return mapaTemas[categoria] || "tema-massas";
+}
+
+function renderizarTabela() {
+  //Apagar linhas da <tbody> da tabela no html
+  const termo = filtroTabelaInput.value.trim().toLowerCase();
+
+  // 1. Filtra pelo texto digitado
+  const filtradas = receitas.filter((item) =>
+    item.titulo.toLowerCase().includes(termo)
+  );
+
+  // 2. Calcula paginação
+  const totalPaginas = Math.max(1, Math.ceil(filtradas.length / itensPorPagina));
+  if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+
+  const inicio = (paginaAtual - 1) * itensPorPagina;
+  const paginadas = filtradas.slice(inicio, inicio + itensPorPagina);
+
+  // 3. Limpa e popula o <tbody>
+  corpoTabelaEl.innerHTML = "";
+
+  if (paginadas.length === 0) {
+    corpoTabelaEl.innerHTML = `
+      <tr>
+        <td colspan="4" class="text-center text-muted py-4 small">
+          Nenhuma receita encontrada. Cadastre uma nova ao lado.
+        </td>
+      </tr>
+    `;
+  } else {
+    paginadas.forEach((receita) => {
+      const clone = templateLinha.content.cloneNode(true);
+      const classeTema = obterClasseTema(receita.categoria);
+
+      const tr = clone.querySelector("tr");
+      const thumb = clone.querySelector(".thumb-tabela");
+      const celulaTitulo = clone.querySelector(".celula-titulo");
+      const celulaCategoria = clone.querySelector(".celula-categoria");
+      const celulaDificuldade = clone.querySelector(".celula-dificuldade");
+      const btnEditar = clone.querySelector(".btn-editar");
+      const btnExcluir = clone.querySelector(".btn-excluir");
+
+      tr.dataset.id = receita.id;
+      thumb.classList.add(classeTema);
+      celulaTitulo.textContent = receita.titulo;
+      celulaCategoria.textContent = receita.categoria;
+
+      celulaDificuldade.classList.add(classeTema);
+      celulaDificuldade.textContent = receita.dificuldade;
+
+      btnEditar.dataset.id = receita.id;
+      btnEditar.setAttribute("aria-label", `Editar ${receita.titulo}`);
+
+      btnExcluir.dataset.id = receita.id;
+      btnExcluir.setAttribute("aria-label", `Excluir ${receita.titulo}`);
+
+      corpoTabelaEl.appendChild(clone);
+    });
+  }
+
+  // 4. Atualiza contador e botões de paginação
+  contadorTabelaEl.textContent = `${filtradas.length} ${
+    filtradas.length === 1 ? "receita cadastrada" : "receitas cadastradas"
+  }`;
+
+}
