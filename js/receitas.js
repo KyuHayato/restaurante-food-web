@@ -7,55 +7,49 @@ let receitas = [
     titulo: "Macarrão cremoso",
     categoria: "Massas",
     dificuldade: "Fácil",
-    preparo:
-      "Cozinhe o macarrão al dente, refogue o alho, misture creme de leite e parmesão até encorpar.",
-    publicar: true,
+    preparo: "Cozinhe o macarrão al dente, refogue o alho, misture creme de leite e parmesão até encorpar.",
+    publicar: true
   },
   {
     id: 2,
     titulo: "Frango grelhado",
     categoria: "Carnes",
     dificuldade: "Médio",
-    preparo:
-      "Tempere os filés com limão, páprica e sal por 15 minutos. Grelhe em frigideira quente com azeite.",
-    publicar: true,
+    preparo: "Tempere os filés com limão, páprica e sal por 15 minutos. Grelhe em frigideira quente com azeite.",
+    publicar: true
   },
   {
     id: 3,
     titulo: "Cheesecake de frutas",
     categoria: "Doces",
     dificuldade: "Difícil",
-    preparo:
-      "Faça a base com biscoito triturado e manteiga, cubra com creme de cream cheese gelado e geleia.",
-    publicar: true,
+    preparo: "Faça a base com biscoito triturado e manteiga, cubra com creme de cream cheese gelado e geleia.",
+    publicar: true
   },
   {
     id: 4,
     titulo: "Salada caesar",
     categoria: "Saladas",
     dificuldade: "Fácil",
-    preparo:
-      "Higienize a alface americana, adicione croutons, lascas de parmesão e finalize com molho caesar.",
-    publicar: true,
+    preparo: "Higienize a alface americana, adicione croutons, lascas de parmesão e finalize com molho caesar.",
+    publicar: true
   },
   {
     id: 5,
     titulo: "Lasanha de abobrinha",
     categoria: "Massas",
     dificuldade: "Médio",
-    preparo:
-      "Intercale fatias de abobrinha grelhada, molho de tomate e muçarela. Asse por 25 minutos.",
-    publicar: true,
+    preparo: "Intercale fatias de abobrinha grelhada, molho de tomate e muçarela. Asse por 25 minutos.",
+    publicar: true
   },
   {
     id: 6,
     titulo: "Brigadeiro gourmet",
     categoria: "Doces",
     dificuldade: "Fácil",
-    preparo:
-      "Misture leite condensado, chocolate meio amargo e manteiga em fogo baixo até soltar do fundo.",
-    publicar: true,
-  },
+    preparo: "Misture leite condensado, chocolate meio amargo e manteiga em fogo baixo até soltar do fundo.",
+    publicar: true
+  }
 ];
 
 // Estado de controle da paginação
@@ -69,9 +63,7 @@ const corpoTabelaEl = document.getElementById("corpo-tabela-receitas");
 const contadorTabelaEl = document.getElementById("contador-tabela");
 const filtroTabelaInput = document.getElementById("filtro-tabela");
 const paginacaoEl = document.getElementById("paginacao-receitas");
-const badgeResumoDificuldadeEl = document.getElementById(
-  "badge-resumo-dificuldade",
-);
+const badgeResumoDificuldadeEl = document.getElementById("badge-resumo-dificuldade");
 const templateLinha = document.getElementById("template-linha-receita");
 
 // Alerta de feedback
@@ -91,28 +83,64 @@ const checkPublicar = document.getElementById("check-publicar");
 const btnCancelar = document.getElementById("btn-cancelar-receita");
 const btnEntrar = document.getElementById("btn-entrar");
 
+// ============================================================================
+// 3. FUNÇÕES AUXILIARES E RENDERIZAÇÃO DINÂMICA
+// ============================================================================
+
+/**
+ * Mapeia a categoria para a classe CSS de cor correspondente
+ *  1
+ */
 function obterClasseTema(categoria) {
   const mapaTemas = {
     Massas: "tema-massas",
     Carnes: "tema-carnes",
     Doces: "tema-doces",
-    Saladas: "tema-saladas",
+    Saladas: "tema-saladas"
   };
   return mapaTemas[categoria] || "tema-massas";
 }
 
+/**
+ * Exibe o alerta superior com mensagem dinâmica
+ *  2
+ */
+function mostrarAlerta(mensagem) {
+  textoAlertaFeedbackEl.textContent = mensagem;
+  alertaFeedbackEl.classList.remove("d-none");
+}
+
+/**
+ * Usa .reduce() para contabilizar receitas por nível de dificuldade
+ *  6
+ */
+function atualizarResumoDificuldade() {
+  const resumo = receitas.reduce(
+    (acc, item) => {
+      acc[item.dificuldade] = (acc[item.dificuldade] || 0) + 1;
+      return acc;
+    },
+    { Fácil: 0, Médio: 0, Difícil: 0 }
+  );
+
+  badgeResumoDificuldadeEl.textContent = `Fáceis: ${resumo["Fácil"]} · Médias: ${resumo["Médio"]} · Difíceis: ${resumo["Difícil"]}`;
+}
+
+/**
+ * Filtra, pagina e renderiza as linhas da tabela usando <template>
+ *  1
+ */
 function renderizarTabela() {
   //Apagar linhas da <tbody> da tabela no html
   const termo = filtroTabelaInput.value.trim().toLowerCase();
+
   // 1. Filtra pelo texto digitado
   const filtradas = receitas.filter((item) =>
-    item.titulo.toLowerCase().includes(termo),
+    item.titulo.toLowerCase().includes(termo)
   );
+
   // 2. Calcula paginação
-  const totalPaginas = Math.max(
-    1,
-    Math.ceil(filtradas.length / itensPorPagina),
-  );
+  const totalPaginas = Math.max(1, Math.ceil(filtradas.length / itensPorPagina));
   if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
 
   const inicio = (paginaAtual - 1) * itensPorPagina;
@@ -164,23 +192,50 @@ function renderizarTabela() {
   contadorTabelaEl.textContent = `${filtradas.length} ${
     filtradas.length === 1 ? "receita cadastrada" : "receitas cadastradas"
   }`;
+
+  renderizarPaginacao(totalPaginas); // 5
+  atualizarResumoDificuldade(); // 6
 }
-// ============================================================================
-// 6. INICIALIZAÇÃO
-// ============================================================================
-document.addEventListener("DOMContentLoaded", () => {
-  alertaFeedbackEl.classList.add("d-none"); // Inicia oculto até a primeira ação
-  renderizarTabela();
-});
 
 /**
- * Exibe o alerta superior com mensagem dinâmica
- *
+ * Cria dinamicamente os botões de paginação com document.createElement
+ *  5
  */
-function mostrarAlerta(mensagem) {
-  textoAlertaFeedbackEl.textContent = mensagem;
-  alertaFeedbackEl.classList.remove("d-none");
+function renderizarPaginacao(totalPaginas) {
+  paginacaoEl.innerHTML = "";
+
+  const criarItemPagina = (label, pagina, desabilitado = false, ativo = false) => {
+    const li = document.createElement("li");
+    li.className = `page-item ${desabilitado ? "disabled" : ""} ${ativo ? "active" : ""}`;
+    if (ativo) li.setAttribute("aria-current", "page");
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "page-link";
+    btn.textContent = label;
+    btn.dataset.pagina = pagina;
+
+    li.appendChild(btn);
+    return li;
+  };
+
+  paginacaoEl.appendChild(
+    criarItemPagina("‹", paginaAtual - 1, paginaAtual === 1, false)
+  );
+
+  for (let i = 1; i <= totalPaginas; i++) {
+    paginacaoEl.appendChild(criarItemPagina(String(i), i, false, i === paginaAtual));
+  }
+
+  paginacaoEl.appendChild(
+    criarItemPagina("›", paginaAtual + 1, paginaAtual === totalPaginas, false)
+  );
 }
+
+// ============================================================================
+// 4. VALIDAÇÃO, TRATAMENTO DE DADOS E SUBMIT (CREATE / UPDATE)
+// ============================================================================
+// 2
 function validarFormulario() {
   let valido = true;
 
@@ -221,7 +276,7 @@ function validarFormulario() {
 
   return valido;
 }
-//
+// 2
 function resetarFormulario() {
   formReceita.reset();
   inputId.value = "";
@@ -232,7 +287,7 @@ function resetarFormulario() {
     campo.classList.remove("is-invalid", "is-valid");
   });
 }
-
+// 2
 formReceita.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -242,40 +297,154 @@ formReceita.addEventListener("submit", (event) => {
   const tituloTratado = inputTitulo.value.trim();
   const categoriaEscolhida = selectCategoria.value;
   const dificuldadeEscolhida = document.querySelector(
-    'input[name="dificuldade"]:checked',
+    'input[name="dificuldade"]:checked'
   ).value;
   const preparoTratado = textareaPreparo.value.trim();
   const publicarAgora = checkPublicar.checked;
   const idEdicao = Number(inputId.value);
+
+  // 4
+  if (idEdicao) {
+    // MODO EDIÇÃO: localiza o índice e atualiza o objeto
+    const indice = receitas.findIndex((item) => item.id === idEdicao);
+    if (indice !== -1) {
+      receitas[indice] = {
+        ...receitas[indice],
+        titulo: tituloTratado,
+        categoria: categoriaEscolhida,
+        dificuldade: dificuldadeEscolhida,
+        preparo: preparoTratado,
+        publicar: publicarAgora
+      };
+      mostrarAlerta(`Receita “${tituloTratado}” atualizada com sucesso.`);
+    }
+  } else {
+    // MODO CRIAÇÃO: gera novo ID e adiciona no início do array
+    const novoId = receitas.length > 0 ? Math.max(...receitas.map((r) => r.id)) + 1 : 1;
+    receitas.unshift({
+      id: novoId,
+      titulo: tituloTratado,
+      categoria: categoriaEscolhida,
+      dificuldade: dificuldadeEscolhida,
+      preparo: preparoTratado,
+      publicar: publicarAgora
+    });
+    paginaAtual = 1;
+    mostrarAlerta(`Receita “${tituloTratado}” salva com sucesso.`);
+  }
+
   resetarFormulario();
+  renderizarTabela(); // 5
 });
 
+// ============================================================================
+// 5. EVENTOS DE INTERAÇÃO (INPUT, CHANGE, CLICK, DELEGAÇÃO)
+// ============================================================================
+
 // Limpa validação visual em tempo real conforme o usuário corrige os campos
-//
+// 2
 inputTitulo.addEventListener("input", () => {
   if (inputTitulo.value.trim().length >= 3) {
     inputTitulo.classList.remove("is-invalid");
   }
 });
-//
+// 2
 selectCategoria.addEventListener("change", () => {
   if (selectCategoria.value) {
     selectCategoria.classList.remove("is-invalid");
   }
 });
-//
+// 2
 textareaPreparo.addEventListener("input", () => {
   if (textareaPreparo.value.trim().length >= 10) {
     textareaPreparo.classList.remove("is-invalid");
   }
 });
 
+// Filtro da tabela em tempo real
+// 3
+filtroTabelaInput.addEventListener("input", () => {
+  paginaAtual = 1;
+  renderizarTabela();
+});
+
+// Delegação de eventos na tabela (Editar com .find() e Excluir com .filter())
+corpoTabelaEl.addEventListener("click", (event) => {
+  const btnEditar = event.target.closest(".btn-editar");
+  // 3
+  const btnExcluir = event.target.closest(".btn-excluir");
+
+  // Ação: Editar
+  // 4
+  if (btnEditar) {
+    const id = Number(btnEditar.dataset.id);
+    const receita = receitas.find((item) => item.id === id);
+    if (!receita) return;
+
+    inputId.value = receita.id;
+    inputTitulo.value = receita.titulo;
+    selectCategoria.value = receita.categoria;
+    textareaPreparo.value = receita.preparo;
+    checkPublicar.checked = receita.publicar;
+
+    const radioDificuldade = document.querySelector(
+      `input[name="dificuldade"][value="${receita.dificuldade}"]`
+    );
+    if (radioDificuldade) radioDificuldade.checked = true;
+
+    tituloFormEl.textContent = "Editar receita";
+    badgeModoEdicaoEl.classList.remove("d-none");
+    inputTitulo.focus();
+  }
+
+  // Ação: Excluir
+  if (btnExcluir) {
+    const id = Number(btnExcluir.dataset.id);
+    const receitaRemovida = receitas.find((item) => item.id === id);
+
+    receitas = receitas.filter((item) => item.id !== id);
+    renderizarTabela();
+
+    if (Number(inputId.value) === id) resetarFormulario();
+    if (receitaRemovida) {
+      mostrarAlerta(`Receita “${receitaRemovida.titulo}” excluída.`);
+    }
+  }
+});
+
+// Delegação de eventos na paginação
+paginacaoEl.addEventListener("click", (event) => {
+  const link = event.target.closest(".page-link");
+  if (!link || link.parentElement.classList.contains("disabled")) return;
+
+  paginaAtual = Number(link.dataset.pagina);
+  renderizarTabela();
+});
+
 // Botão Cancelar do formulário
-//
+// 2
 btnCancelar.addEventListener("click", resetarFormulario);
 
 // Fechar alerta de feedback
-//
+// 2
 btnFecharAlerta.addEventListener("click", () => {
   alertaFeedbackEl.classList.add("d-none");
+});
+
+// Alternância do botão Entrar no cabeçalho
+// 6
+btnEntrar.addEventListener("click", () => {
+  const logado = btnEntrar.dataset.logado === "true";
+  btnEntrar.textContent = logado ? "Entrar" : "Olá, Chef!";
+  btnEntrar.dataset.logado = String(!logado);
+  btnEntrar.classList.toggle("btn-outline-receitas", logado);
+  btnEntrar.classList.toggle("btn-receitas", !logado);
+});
+
+// ============================================================================
+// 6. INICIALIZAÇÃO
+// ============================================================================
+document.addEventListener("DOMContentLoaded", () => {
+  alertaFeedbackEl.classList.add("d-none"); // Inicia oculto até a primeira ação
+  renderizarTabela();
 });
